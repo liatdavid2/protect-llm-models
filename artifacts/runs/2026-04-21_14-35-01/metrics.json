@@ -1,0 +1,89 @@
+{
+  "dataset_name": "neuralchemy/Prompt-injection-dataset",
+  "dataset_config": "core",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "validation": {
+    "accuracy": 0.9521785334750266,
+    "f1_macro": 0.9510960513049714,
+    "f1_binary": 0.9583718778908418,
+    "classification_report": {
+      "0": {
+        "precision": 0.9593908629441624,
+        "recall": 0.9287469287469288,
+        "f1-score": 0.9438202247191011,
+        "support": 407.0
+      },
+      "1": {
+        "precision": 0.946983546617916,
+        "recall": 0.9700374531835206,
+        "f1-score": 0.9583718778908418,
+        "support": 534.0
+      },
+      "accuracy": 0.9521785334750266,
+      "macro avg": {
+        "precision": 0.9531872047810392,
+        "recall": 0.9493921909652248,
+        "f1-score": 0.9510960513049714,
+        "support": 941.0
+      },
+      "weighted avg": {
+        "precision": 0.9523499416708197,
+        "recall": 0.9521785334750266,
+        "f1-score": 0.9520780172735215,
+        "support": 941.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        378,
+        29
+      ],
+      [
+        16,
+        518
+      ]
+    ]
+  },
+  "test": {
+    "accuracy": 0.9447983014861996,
+    "f1_macro": 0.942894448459978,
+    "f1_binary": 0.9533213644524237,
+    "classification_report": {
+      "0": {
+        "precision": 0.9447368421052632,
+        "recall": 0.9205128205128205,
+        "f1-score": 0.9324675324675324,
+        "support": 390.0
+      },
+      "1": {
+        "precision": 0.9448398576512456,
+        "recall": 0.9619565217391305,
+        "f1-score": 0.9533213644524237,
+        "support": 552.0
+      },
+      "accuracy": 0.9447983014861996,
+      "macro avg": {
+        "precision": 0.9447883498782543,
+        "recall": 0.9412346711259755,
+        "f1-score": 0.942894448459978,
+        "support": 942.0
+      },
+      "weighted avg": {
+        "precision": 0.9447972079029089,
+        "recall": 0.9447983014861996,
+        "f1-score": 0.9446876123567681,
+        "support": 942.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        359,
+        31
+      ],
+      [
+        21,
+        531
+      ]
+    ]
+  }
+}

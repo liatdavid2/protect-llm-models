@@ -3,8 +3,8 @@ from typing import Tuple
 
 import numpy as np
 
-from src.config import DATASET_CONFIG
-from src.run_paths import CACHE_DIR
+from prompt_injection.config import DATASET_CONFIG
+from prompt_injection.run_paths import CACHE_DIR
 
 
 def _safe_model_name(model_name: str) -> str:

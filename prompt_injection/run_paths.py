@@ -1,7 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 
-from src.config import ARTIFACTS_DIR
+from prompt_injection.config import ARTIFACTS_DIR
 
 
 CACHE_DIR = ARTIFACTS_DIR / "cache"

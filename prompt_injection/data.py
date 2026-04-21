@@ -1,11 +1,11 @@
 from typing import Tuple, Dict
 import pandas as pd
 from datasets import load_dataset
-from src.config import DATASET_NAME, DATASET_CONFIG
+from prompt_injection.config import DATASET_NAME, DATASET_CONFIG
 import os
 from dotenv import load_dotenv
 from datasets import load_dataset
-from src.config import DATASET_NAME, DATASET_CONFIG
+from prompt_injection.config import DATASET_NAME, DATASET_CONFIG
 
 REQUIRED_COLUMNS = ["text", "label"]
 

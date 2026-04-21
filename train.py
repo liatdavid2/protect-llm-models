@@ -1,10 +1,10 @@
-from src.config import EMBEDDING_MODEL_NAME
-from src.data import load_splits, build_label_map
-from src.features import EmbeddingEncoder
-from src.model import build_model, evaluate_model, save_model
-from src.utils import save_json
-from src.embedding_cache import get_cache_path, load_embeddings_cache, save_embeddings_cache
-from src.run_paths import create_run_dir
+from prompt_injection.config import EMBEDDING_MODEL_NAME
+from prompt_injection.data import load_splits, build_label_map
+from prompt_injection.features import EmbeddingEncoder
+from prompt_injection.model import build_model, evaluate_model, save_model
+from prompt_injection.utils import save_json
+from prompt_injection.embedding_cache import get_cache_path, load_embeddings_cache, save_embeddings_cache
+from prompt_injection.run_paths import create_run_dir
 
 
 def main():

@@ -1,11 +1,11 @@
 import numpy as np
 
-from src.config import EMBEDDING_MODEL_NAME
-from src.data import load_splits
-from src.features import EmbeddingEncoder
-from src.model import evaluate_model, load_model
-from src.latest_run import get_latest_run_dir
-from src.embedding_cache import get_cache_path, load_embeddings_cache, save_embeddings_cache
+from prompt_injection.config import EMBEDDING_MODEL_NAME
+from prompt_injection.data import load_splits
+from prompt_injection.features import EmbeddingEncoder
+from prompt_injection.model import evaluate_model, load_model
+from prompt_injection.latest_run import get_latest_run_dir
+from prompt_injection.embedding_cache import get_cache_path, load_embeddings_cache, save_embeddings_cache
 
 
 def main():

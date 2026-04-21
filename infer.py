@@ -1,8 +1,8 @@
 import sys
 
-from src.config import EMBEDDING_MODEL_NAME, MODEL_PATH
-from src.features import EmbeddingEncoder
-from src.model import load_model
+from prompt_injection.config import EMBEDDING_MODEL_NAME, MODEL_PATH
+from prompt_injection.features import EmbeddingEncoder
+from prompt_injection.model import load_model
 
 
 def main():
