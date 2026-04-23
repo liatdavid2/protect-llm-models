@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
-load_dotenv()
+load_dotenv(override=False)
 
 from harmful_content_input_guard.config import EMBEDDING_MODEL_NAME as HARMFUL_EMBEDDING_MODEL_NAME
 from harmful_content_input_guard.features import EmbeddingEncoder as HarmfulEmbeddingEncoder
