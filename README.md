@@ -252,7 +252,24 @@ To test only the output-side leakage guard, it is also better to disable both in
 }
 ```
 
-```
+## Model Results
 
+All guard models were trained from scratch on real datasets using `sentence-transformers/all-MiniLM-L6-v2` embeddings.
 
+| Guard | Dataset | Split | Accuracy | F1 Macro | F1 Binary |
+|------|---------|-------|----------|----------|-----------|
+| Prompt Injection Input Guard | `neuralchemy/Prompt-injection-dataset` | Validation | 0.9522 | 0.9511 | 0.9584 |
+| Prompt Injection Input Guard | `neuralchemy/Prompt-injection-dataset` | Test | 0.9448 | 0.9429 | 0.9533 |
+| Harmful Content Input Guard | `nvidia/Aegis-AI-Content-Safety-Dataset-2.0` | Validation | 0.8304 | 0.8229 | 0.8594 |
+| Harmful Content Input Guard | `nvidia/Aegis-AI-Content-Safety-Dataset-2.0` | Test | 0.8035 | 0.8002 | 0.8257 |
+| PII Output Guard | `ai4privacy/pii-masking-300k` | Validation | 0.8870 | 0.8868 | 0.8822 |
+| System Prompt Leakage Output Guard | `gabrielchua/system-prompt-leakage` | Validation | 0.9522 | 0.9511 | 0.9584 |
+| System Prompt Leakage Output Guard | `gabrielchua/system-prompt-leakage` | Test | 0.9448 | 0.9429 | 0.9533 |
+
+### Per-guard summary
+
+- **Prompt Injection Input Guard**: strong performance, with **94.48% test accuracy** and **0.9533 test F1-binary**.
+- **Harmful Content Input Guard**: good baseline performance on a harder safety dataset, with **80.35% test accuracy** and **0.8257 test F1-binary**.
+- **PII Output Guard**: strong validation results, with **88.70% validation accuracy** and **0.8822 validation F1-binary**.
+- **System Prompt Leakage Output Guard**: strong results, with **94.48% test accuracy** and **0.9533 test F1-binary**.
 
