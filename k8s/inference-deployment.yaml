@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secure-llm-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secure-llm-gateway
+  template:
+    metadata:
+      labels:
+        app: secure-llm-gateway
+    spec:
+      containers:
+        - name: api
+          image: secure-llm-gateway:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          env:
+            - name: OLLAMA_BASE_URL
+              value: "http://ollama:11434"
+            - name: DEFAULT_SMALL_MODEL
+              value: "qwen2.5:0.5b"
+            - name: OLLAMA_TIMEOUT_SECONDS
+              value: "120"
+            - name: PROMPT_INJECTION_THRESHOLD
+              value: "0.70"
+            - name: HARMFUL_CONTENT_THRESHOLD
+              value: "0.70"
+            - name: PII_OUTPUT_THRESHOLD
+              value: "0.70"
+            - name: SYSTEM_PROMPT_LEAKAGE_OUTPUT_THRESHOLD
+              value: "0.70"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: secure-llm-gateway
+spec:
+  type: LoadBalancer
+  selector:
+    app: secure-llm-gateway
+  ports:
+    - port: 80
+      targetPort: 8000
