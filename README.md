@@ -128,6 +128,95 @@ Main idea:
 
 `User Prompt -> Input Guards -> Model -> Output Guards -> Final Response`
 
+## AWS EKS Deployment and Scaling
+
+The same secure LLM gateway can run on AWS EKS.
+
+In this setup:
+- the `secure-llm-gateway` API runs as a Kubernetes Deployment
+- the API is exposed through a `LoadBalancer` Service
+- `ollama` runs inside the cluster as an internal Service
+- the gateway can be scaled from 1 replica to 2 replicas and then to 3 replicas
+
+### Architecture Diagram - AWS EKS
+
++--------------------------+
+|        End User          |
++--------------------------+
+             |
+             v
++--------------------------+
+| AWS LoadBalancer Service |
+| secure-llm-gateway       |
++--------------------------+
+             |
+             v
++--------------------------------------------------+
+|                Amazon EKS Cluster                |
+|                                                  |
+|  +--------------------------------------------+  |
+|  | secure-llm-gateway Deployment              |  |
+|  | API + guards + latency tracking            |  |
+|  +--------------------------------------------+  |
+|         |                    |                   |
+|         v                    v                   |
+|  +------------------+  +------------------+      |
+|  | gateway pod #1   |  | gateway pod #2   |      |
+|  +------------------+  +------------------+      |
+|                                                  |
+|  +--------------------------------------------+  |
+|  | ollama Service (ClusterIP)                 |  |
+|  +--------------------------------------------+  |
+|                      |                           |
+|                      v                           |
+|             +------------------+                |
+|             | ollama pod       |                |
+|             +------------------+                |
++--------------------------------------------------+
+
+### Scaling Example - 2 Replicas
+```
++--------------------------+
+| AWS LoadBalancer Service |
++--------------------------+
+             |
+             v
++-----------------------------------------------+
+| secure-llm-gateway Deployment (replicas = 2)  |
++-----------------------------------------------+
+         |                         |
+         v                         v
++------------------+      +------------------+
+| gateway pod #1   |      | gateway pod #2   |
++------------------+      +------------------+
+
+### Scaling Example - 3 Replicas
+
++--------------------------+
+| AWS LoadBalancer Service |
++--------------------------+
+             |
+             v
++-----------------------------------------------+
+| secure-llm-gateway Deployment (replicas = 3)  |
++-----------------------------------------------+
+         |                 |                 |
+         v                 v                 v
++------------------+ +------------------+ +------------------+
+| gateway pod #1   | | gateway pod #2   | | gateway pod #3   |
++------------------+ +------------------+ +------------------+
+```
+### Scaling Commands
+
+Scale to 2 replicas:
+
+```
+kubectl scale deployment secure-llm-gateway --replicas=2
+kubectl get deployments
+kubectl get pods -o wide
+kubectl get endpoints secure-llm-gateway
+```
+
 ## Guards
 
 ### 1. Prompt Injection Input Guard
