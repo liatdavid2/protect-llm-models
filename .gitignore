@@ -13,4 +13,9 @@
 /system_prompt_leakage_output_guard/__pycache__
 /system_prompt_leakage_output_guard/__pycache__
 *.pyc
-*.pyc
+/artifacts/harmful_content_input_guard/runs
+/artifacts/pii_output_guard/runs
+/artifacts/prompt_injection_input_guard/runs
+/artifacts/system_prompt_leakage_output_guard/runs
+system_prompt_leakage_output_guard/__pycache__/data.cpython-39.pyc
+system_prompt_leakage_output_guard/__pycache__/embedding_cache.cpython-39.pyc
