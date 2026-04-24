@@ -1,1 +1,0 @@
-arn:aws:ecs:us-east-1:127393435473:task/secure-llm-training-cluster/793190354eff44c7b2a14aea31ce9646

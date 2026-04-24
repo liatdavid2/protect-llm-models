@@ -1,6 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
+cd /d "%~dp0"
+set AWS_PAGER=
+
 REM ===== Config =====
 set AWS_REGION=us-east-1
 set AWS_ACCOUNT_ID=127393435473
@@ -102,6 +105,8 @@ echo   ]
 echo }
 ) > ecs-task-trust-policy.json
 
+copy /Y ecs-task-trust-policy.json ecs-task-execution-trust.json >nul
+
 REM ===== Execution role =====
 echo.
 echo [9/12] Ensuring ECS execution role exists...
@@ -110,7 +115,7 @@ if errorlevel 1 (
     echo Creating %EXECUTION_ROLE_NAME%...
     aws iam create-role ^
       --role-name %EXECUTION_ROLE_NAME% ^
-      --assume-role-policy-document file://ecs-task-trust-policy.json
+      --assume-role-policy-document file://ecs-task-execution-trust.json
     if errorlevel 1 goto error
 
     aws iam attach-role-policy ^

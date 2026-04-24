@@ -383,3 +383,46 @@ Not uploaded:
 
 MLflow keeps the full experiment history, while S3 stores only the latest models needed for deployment.
 
+### AWS ECS Fargate Training
+
+The guard models can be trained in AWS using an ECS Fargate one-time task.
+
+The training flow:
+
+```text
+Docker image -> ECR -> ECS Fargate task -> train guard models -> upload artifacts to S3 -> exit
+````
+
+Each Fargate run starts from a clean container, loads the latest datasets, rebuilds embeddings, trains all guard models, uploads the latest model artifacts to S3, and then stops automatically.
+
+This avoids maintaining a persistent training server and demonstrates a reproducible cloud-based ML training workflow.
+
+Main files:
+
+```text
+aws_fargate_training/run_fargate_training.cmd
+aws_fargate_training/ecs-task-def.json
+aws_fargate_training/s3-guard-trainer-policy.json
+Dockerfile.train_guards
+train_all_guards.py
+```
+
+Run:
+
+```cmd
+aws_fargate_training\run_fargate_training.cmd
+```
+
+Check logs:
+
+```cmd
+aws logs tail /ecs/secure-llm-guard-trainer --region us-east-1 --follow
+```
+
+Check S3 artifacts:
+
+```cmd
+aws s3 ls s3://secure-llm-gateway-models/secure-llm-gateway/guard-training/local-demo/ --recursive
+```
+
+
