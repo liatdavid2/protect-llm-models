@@ -1,0 +1,30 @@
+{
+  "family": "secure-llm-guard-trainer-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "2048",
+  "memory": "4096",
+  "executionRoleArn": "arn:aws:iam::127393435473:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::127393435473:role/secureLlmGuardTrainerTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "secure-llm-guard-trainer",
+      "image": "127393435473.dkr.ecr.us-east-1.amazonaws.com/secure-llm-guard-trainer:latest",
+      "essential": true,
+      "environment": [
+        {"name": "USE_S3_UPLOAD", "value": "true"},
+        {"name": "S3_BUCKET", "value": "secure-llm-gateway-models"},
+        {"name": "S3_PREFIX", "value": "secure-llm-gateway/guard-training/local-demo"},
+        {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/secure-llm-guard-trainer",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
