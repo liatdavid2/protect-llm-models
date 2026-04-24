@@ -175,8 +175,10 @@ In this setup:
 +--------------------------------------------------+
 ```
 
-### Scaling Example - 2 Replicas
+
 ```
+### Scaling Example - 2 Replicas
+
 +--------------------------+
 | AWS LoadBalancer Service |
 +--------------------------+
