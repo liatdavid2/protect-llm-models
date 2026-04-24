@@ -36,6 +36,12 @@ The demo highlights:
 
 [![Watch](images/k8s-video.png)](https://youtu.be/wL5SNM9fvEA)
 
+### Kubernetes Scaling Demo
+
+This demo shows how the `secure-llm-gateway` API scales horizontally on Kubernetes, from 2 replicas to 3 replicas, and then back to 2 replicas.
+
+[![Watch](images/AWS_EKS.png)](https://youtu.be/hURJjyjlP2E)
+
 ## What this project does
 
 This project adds security layers around a model served through Ollama.
