@@ -6,3 +6,5 @@
 /harmful_content/__pycache__
 /pii_output_guard/__pycache__
 /prompt_injection_input_guard/__pycache__
+/mlruns
+/system_prompt_leakage_output_guard/__pycache__
