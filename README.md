@@ -11,6 +11,8 @@ The system protects an RAG/LLM-style API with multiple guards before and after m
 
 The API exposes a single `/chat` endpoint and measures latency for every stage.
 
+* **Latency note:** Tested on a 5-year-old laptop; production hardware should be faster.
+
 ## Datasets
 
 Each guard is trained on a real dataset, not synthetic placeholder data.
