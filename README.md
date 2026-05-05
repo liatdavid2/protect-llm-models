@@ -11,7 +11,7 @@ The system protects an RAG/LLM-style API with multiple guards before and after m
 
 The API exposes a single `/chat` endpoint and measures latency for every stage.
 
-#### *Latency note:* Tested locally on a 5-year-old CPU-only laptop with Docker, so latency is expected to improve on production hardware.
+#### *Latency note: Tested locally on a 5-year-old CPU-only laptop with Docker, so latency is expected to improve on production hardware.
 
 ## Datasets
 
